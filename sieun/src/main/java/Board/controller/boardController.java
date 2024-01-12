@@ -1,5 +1,6 @@
 package Board.controller;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,10 @@ public class boardController {
         return "post";
     }
 
-    @PostMapping("/boards/post")
+    @PostMapping("/boards/article")
     public String article(@ModelAttribute boardDto boardDto) {
         System.out.println("boardDto = " + boardDto );
-        boardService.post(boardDto);
+        boardService.article(boardDto);
         return "index";
     }
 
