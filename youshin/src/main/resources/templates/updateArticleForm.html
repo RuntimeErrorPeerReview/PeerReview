@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Update Article</title>
+    <!-- 부트스트랩 CDN 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">게시글 수정</h2>
+
+    <form onsubmit="return checkPassword();" th:action="@{/article/${articleId}/update}" method="post">
+        <input type="hidden" name="id" th:value="${article.id}">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" name="title" th:value="${article.title}" required>
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" id="content" name="content" rows="5" th:text="${article.content}" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">카테고리</label>
+            <select class="form-control" id="category" name="category" th:field="${board.category}">
+                <option value="자유">자유 게시판</option>
+                <option value="개발">개발 게시판</option>
+                <option value="일상">일상 게시판</option>
+                <option value="사건사고">사건사고 게시판</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="password">본인 확인 비밀번호</label>
+            <input type="password" class="form-control" id="password" name="password"
+                   placeholder="게시글 작성 시 입력했던 비밀번호와 일치해야 수정이 가능합니다." required>
+        </div>
+        <button type="submit" class="btn btn-secondary">게시글 수정</button>
+    </form>
+</div>
+
+<!-- 부트스트랩 및 팝퍼, 제이쿼리 CDN 추가 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+    // 입력한 비밀번호와 게시글 쓰기에서 입력한 비밀번호가 같은지 확인하고,
+    // 일치하면 수정폼 제출, 불일치시 비밀번호 불일치 알림
+    function checkPassword() {
+        const articleId = [[${article.id}]];
+        const passwordInput = document.getElementById('password');
+        const enteredPassword = passwordInput.value;
+        const articlePassword = [[${article.password}]];
+
+        if(enteredPassword != "") {
+            if (enteredPassword == articlePassword) {
+                return true;
+            } else {
+                alert("비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>

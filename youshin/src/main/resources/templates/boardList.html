@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Boards List</title>
+    <!-- 부트스트랩 CDN 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>게시판 목록 보기</h2>
+        <a th:href="@{/article}" class="btn btn-primary">게시글 쓰기</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">게시판 카테고리</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td><a th:href="@{/boards/allCategory}">전체 카테고리</a></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td><a href="/boards/1">자유 게시판</a></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td><a href="/boards/2">개발 게시판</a></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td><a href="/boards/3">일상 게시판</a></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td><a href="boards/4">사건사고 게시판</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+<!--    검색 부분-->
+    <form class="row g-2 align-items-center" action="/boards/search" method="get">
+        <div class="col-auto">
+        <select class="form-select me-2" id="criteria" name="criteria" aria-label="Category">
+            <option selected value="all">전체</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+        </select>
+        </div>
+        <div class="col-auto">
+        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세요" id="search" name="search" aria-label="Search">
+        </div>
+        <div class="col-auto">
+        <button class="btn btn-outline-success me-2" type="submit">검색</button>
+        </div>
+    </form>
+
+</div>
+
+<!-- 부트스트랩 및 팝퍼, 제이쿼리 CDN 추가 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
