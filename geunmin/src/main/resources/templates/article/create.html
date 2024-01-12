@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/boards/{id}/postArticle(id=${boardId})}" method="post">
+  <!--<form action="/board/posting" method="post">-->
+
+    <label>
+      제목: <input type="text" name="title">
+    </label>
+  </div>
+  <div>
+    <label>
+      비밀 번호: <input type="text" name="password">
+    </label>
+  </div>
+  <div>
+    <label>
+      내용: <textarea name="content"></textarea>
+    </label>
+  </div>
+
+  <div>
+    <input type="submit" value="작성">
+  </div>
+  <div>
+    <a th:href="@{/boards/{id}(id=${boardId})}">뒤로 가기</a>
+  </div>
+</form>
+</body>
+</html>
+
+</body>
+</html>

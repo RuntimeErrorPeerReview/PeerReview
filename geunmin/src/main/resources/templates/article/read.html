@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div>
+  <h2 th:text="${article.title}">[[${article.title}]]</h2>
+</div>
+
+<div>
+  <a th:href="@{/article/{id}/update(id=${article.id})}">수정</a><a th:href="@{/article/{id}/delete(id=${article.id})}">삭제</a><br>
+</div>
+<div>
+  <a href="/boards">뒤로가기</a>
+</div>
+<hr>
+<div>
+  <p th:text="${article.content}">[[${article.content}]]</p>
+</div>
+<hr>
+<div>
+  <label>
+    <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
+  </label>
+</div>
+</body>
+</html>

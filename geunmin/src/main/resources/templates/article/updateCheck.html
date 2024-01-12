@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Article</title>
+</head>
+<body>
+<h2>비밀번호를 입력해주세요</h2>
+<form th:action="@{/article/{id}/verify-update-password(id=${article.id})}" method="post">
+  <div>
+    <label>비밀번호:
+      <input type="password" name="password" required>
+    </label>
+  </div>
+  <div>
+    <button type="submit">확인</button>
+  </div>
+</form>
+<a th:href="@{/article/{id}(id=${article.id})}">취소</a>
+</body>
+</html>
