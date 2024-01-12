@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form th:action="@{/{id}/update-article/incorrect(id=${article.id})}" method="post"></form>
+<p>입력하신 비밀번호가 일치 하지 않습니다. 다시 시도해주세요</p>
+<a th:href="@{/article/{id}(id=${article.id})}">back</a>
+</body>
+</html>
